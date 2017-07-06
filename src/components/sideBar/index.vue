@@ -1,33 +1,41 @@
 <template lang="html">
-  <section class="side-bar">
-    <mu-raised-button label="toggle drawer" @click="toggleSideBar()"/>
-    <mu-drawer right :open="openSideBar" @close="toggleSideBar()">
+  <aside class="side-bar">
+    <mu-drawer right :open="openSideBar" :docked="docked" @close="toggleSideBar()">
       <mu-appbar title="Muse UI"/>
-      <mu-list>
+      <mu-list @itemClick="docked ? '' : toggleSideBar()">
         <mu-list-item title="Menu Item 1"/>
         <mu-list-item title="Menu Item 2"/>
         <mu-list-item title="Menu Item 3"/>
-        <mu-list-item @click.native="openSideBar = false" title="Close"/>
+        <mu-list-item v-if="docked" @click.native="openSideBar = false" title="Close"/>
       </mu-list>
     </mu-drawer>
-  </section>
+  </aside>
 </template>
 
 <script>
+import bus from 'components/vendor/bus.js';
 
 export default {
   name: 'side-bar',
   data() {
     return {
-      openSideBar: false
+      openSideBar: false,
+      docked: true,
     }
   },
   methods: {
-    toggleSideBar () {
-      this.openSideBar = !this.openSideBar
+    toggleSideBar (flag) {
+        this.openSideBar = !this.openSideBar;
+        this.docked = !flag;
     }
+  },
+  created() {
+    bus.$on("toggleSideBar", (isOpen, docked) => {
+      this.openSideBar = isOpen;
+      this.docked = docked;
+    }); 
   }
-}
+} 
 </script>
 
 

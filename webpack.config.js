@@ -85,10 +85,12 @@ module.exports = {
     }
   },
   devServer: {
-    host: '127.0.0.1',
+    host: '0.0.0.0',
     port: 9000,
     historyApiFallback: true,
     noInfo: false,
+    disableHostCheck: true,
+    public: '127.0.0.1:9000',
     proxy: {
       '/images': 'http://localhost:9000/dist',
       '/fonts': 'http://localhost:9000/dist',

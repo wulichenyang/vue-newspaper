@@ -5,5 +5,8 @@ import FooterTab from 'components/default/footerTab.vue';
 export default {
   name: 'content',
   template,
-  components: { SideBar, FooterTab }
+  components: { SideBar, FooterTab },
+  methods: {
+    
+  }
 }
