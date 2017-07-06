@@ -1,10 +1,9 @@
 import template from 'template/default/content.html';
-import initUI from 'components/default/initUI.js';
+import SideBar from 'components/sideBar/index.vue'; 
+import FooterTab from 'components/default/footerTab.vue'; 
 
 export default {
   name: 'content',
   template,
-  mounted() {
-    initUI();
-  }
+  components: { SideBar, FooterTab }
 }
