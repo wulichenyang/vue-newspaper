@@ -13,21 +13,28 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import { mapMutations } from 'vuex';
+import { sideBar } from 'store/mutation-type.js';
 import bus from 'components/vendor/bus.js';
 
 export default {
   name: 'side-bar',
   data() {
     return {
-      openSideBar: false,
-      docked: true,
+
     }
   },
+  computed: {
+    ...mapState({
+      openSideBar: state => state.sideBar.openSideBar,
+      docked: state => state.sideBar.docked,
+    })
+  },
   methods: {
-    toggleSideBar (flag) {
-        this.openSideBar = !this.openSideBar;
-        this.docked = !flag;
-    }
+    ...mapMutations({
+      toggleSideBar: sideBar.toggleSideBar,
+    }),
   },
   created() {
     bus.$on("toggleSideBar", (isOpen, docked) => {

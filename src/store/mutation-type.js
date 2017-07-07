@@ -1,3 +1,3 @@
-export const temp = {
-
+export const sideBar = {
+  toggleSideBar: 'sideBar.toggleSideBar',
 };

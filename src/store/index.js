@@ -3,13 +3,13 @@ import Vuex from 'vuex';
 
 import logger from 'store/plugins/logger.js';
 
-import temp from 'store/modules/temp';
+import sideBar from 'store/modules/sideBar';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
-    temp,
+    sideBar,
   },
   plugins: process.env.NODE_ENV !== 'production' ? [ logger ] : []
 });

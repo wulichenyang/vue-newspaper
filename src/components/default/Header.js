@@ -2,22 +2,28 @@ import template from 'template/default/header.html';
 import $ from 'jQuery';
 import Vue from 'vue';
 import bus from 'components/vendor/bus.js';
+import { mapState } from 'vuex';
+import { mapMutations } from 'vuex';
+import { sideBar } from 'store/mutation-type.js';
 
 export default {
   name: 'header',
   template,
   data() {
-  	return {
-      openSideBar: false,
-      docked: true,
-  	}
+    return {
+      
+    }
+  },
+  computed: {
+    ...mapState({
+      openSideBar: state => state.sideBar.openSideBar,
+      docked: state => state.sideBar.docked,
+    })
   },
   methods: {
-    toggleSideBar(flag) {
-      this.openSideBar = !this.openSideBar;
-      this.docked = !flag;
-      bus.$emit('toggleSideBar', this.openSideBar, this.docked);  
-    }
+    ...mapMutations({
+      toggleSideBar: sideBar.toggleSideBar,
+    }),
   },
   components: {  }
 };
