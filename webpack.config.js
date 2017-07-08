@@ -94,24 +94,15 @@ module.exports = {
     proxy: {
       '/images': 'http://localhost:9000/dist',
       '/fonts': 'http://localhost:9000/dist',
-      '/mars-api-v1': {
+      '/newspaper': {
         // server@client
         // target: 'https://192.168.1.2:8443/',
-        // secure: false
 
         // server@qiongjie
-        target: 'http://192.168.1.97:8080/',
-        pathRewrite: {"^/mars-api-v1" : ""}
+        secure: false,
+        target: 'http://api.yatessss.com:8888',
+        pathRewrite: {"^/newspaper" : ""}
       },
-      '/mars-api-v1': {
-        // server@client
-        // target: 'https://192.168.1.2:8443/',
-        // secure: false
-
-        // server@qiongjie
-        target: 'http://192.168.1.187:9123/',
-        // pathRewrite: {"^/mars-api-v1" : ""}
-      }
     }
   },
   performance: {

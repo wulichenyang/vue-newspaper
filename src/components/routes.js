@@ -4,6 +4,8 @@ import VueRouter from 'vue-router';
 import Header from 'components/default/header.js';
 import Content from 'components/default/Content.js';
 
+import newspaper from 'components/newspaper/index.vue';
+
 Vue.use(VueRouter);
 
 const routes =  [
@@ -14,7 +16,7 @@ const routes =  [
       content: Content
     },
     children: [
-      // { path: 'login', name: 'login', component: Login }
+      { path: 'theme/:id', name: 'newspaper', component: newspaper }
     ]
   },
 ];

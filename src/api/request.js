@@ -1,4 +1,4 @@
-const API_VERSION = 'mars-api-v1';
+const API_VERSION = 'newspaper-api-v1';
 
 export const GET = 'GET';
 export const POST = 'POST';
@@ -29,7 +29,7 @@ export default (url, method = GET) => {
       headers.token = window.token;
     }
     return new Promise((f, r) => {
-      fetch(`/${window.env}${url}${appendToUrl.join('')}`, {
+      fetch(`${url}${appendToUrl.join('')}`, {
         method,
         body: method === GET ? undefined : JSON.stringify(data),
         headers
