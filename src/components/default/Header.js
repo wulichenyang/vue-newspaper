@@ -18,11 +18,13 @@ export default {
     ...mapState({
       openSideBar: state => state.sideBar.openSideBar,
       docked: state => state.sideBar.docked,
+      title: state => state.sideBar.currentTitle,
     })
   },
   methods: {
     ...mapMutations({
       toggleSideBar: sideBar.toggleSideBar,
+      getTitle: sideBar.getTitle,
     }),
   },
   components: {  }
