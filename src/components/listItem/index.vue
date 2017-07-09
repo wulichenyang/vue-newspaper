@@ -1,13 +1,26 @@
 <template lang="html">
-  1
+  <li :to="`detail/${id}`" class="list-detail-box">
+    <div class="list-content-box">
+      <p>{{item.title}}</p>
+      <p class="time" v-if="item.display_date">{{item.display_date}}</p>
+    </div>
+    <div v-if="item.images" class="list-img-box">
+      <img :src="item.images[0] | replaceUrl('https://images.weserv.nl/?url=p')" alt="">
+      <p v-if="item.multipic" class="tip"><i class="iconfont">&#xe61c</i>多图</p>
+    </div>
+  </li>
 </template>
 
 <script>
 import { fetchList } from 'api/newspaper.js';
+import Vue from 'vue';
 
+Vue.filter('replaceUrl', (str,prefix) => {
+    return str.replace(/http\w{0,1}:\/\/p/g, prefix)
+});
 
 export default {
-  name: 'list-item'
+  name: 'list-item',
   props: ['item'],
   data () {
     return {
@@ -17,7 +30,7 @@ export default {
   attached () {
   },
   methods: {
-    replace (str) {
+    replaceUrl (str) {
       return str.replace(/http\w{0,1}:\/\/p/g, 'https://images.weserv.nl/?url=p')
     }
   }
@@ -26,37 +39,57 @@ export default {
 
 
 <style lang="scss">
-.newspaper-wrap {
-  .detail-img-box {
+ .iconfont {
+    font-family:"iconfont";
+    font-size: 10px;
+    font-style:normal;
+    color: #ffffff;
+    margin-right: 3px;
+  }
+  .list-detail-box{
+    position: relative;
+    min-height: 63px;
+    width: 97%;
+    margin: 8px auto 0 auto;
+    background: #ffffff;
+    padding: 13px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    border: 1px solid #eaeaea;
+    border-bottom: 1px solid #d0d0d0;
+    .list-content-box{
+      margin-right: 10px;
+      flex: 1;
+      >p{
+        font-size: 17px;
+        line-height: 1.2;
+      }
+      .time{
+        position: absolute;
+        bottom: 10px;
+        left: 13px;
+        font-size: 13px;
+        color: #b0b0b0;
+      }
+    }
+    .list-img-box{
       position: relative;
-      z-index: 0;
-      height: 230px;
-      width: 100%;
-      background-size: 100%;
-      background-position: center;
-      background-repeat: no-repeat;
-    .detail-mask{
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.1) 100%);
-      background-image: linear-gradient(bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.1) 100%);
-    }
-    .detail-title{
-      position: absolute;
-      bottom: 23px;
-      line-height: 1.2;
-      left: 0;
-      padding: 0 18px;
-      font-weight: 300;
-      font-size: 21px;
-      color: #fff;
-    }
-    .detail-image-source {
-
+      width: 75px;
+      height: 70px;
+      >img{
+        width: 75px;
+        height: 70px;
+      }
+      .tip{
+        color: #ffffff;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-size: 10px;
+        padding: 2px 4px;
+        background: rgba(0, 0, 0, 0.5);
+      }
     }
   }
-}
 </style>

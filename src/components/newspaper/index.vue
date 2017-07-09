@@ -21,10 +21,12 @@
 
 <script>
 import { fetchNewsInfo } from 'api/newspaper.js';
+import listItem from 'components/listItem/index.vue';
 
 
 export default {
   name: 'newspaper',
+  components: { listItem },
   data () {
     return {
       newsInfo: {},
