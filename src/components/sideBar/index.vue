@@ -16,7 +16,6 @@ import { mapMutations } from 'vuex';
 import { sideBar } from 'store/mutation-type.js';
 import bus from 'components/vendor/bus.js';
 import { sideBar as actions } from 'store/mutation-type.js';
-// import { fetchSideBar } from 'api/sideBar.js';
 
 export default {
   name: 'side-bar',

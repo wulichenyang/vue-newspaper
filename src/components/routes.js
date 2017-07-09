@@ -4,7 +4,7 @@ import VueRouter from 'vue-router';
 import Header from 'components/default/header.js';
 import Content from 'components/default/Content.js';
 
-import newspaper from 'components/newspaper/index.vue';
+import Newspaper from 'components/newspaper/index.vue';
 
 Vue.use(VueRouter);
 
@@ -16,7 +16,7 @@ const routes =  [
       content: Content
     },
     children: [
-      { path: 'theme/:id', name: 'newspaper', component: newspaper }
+      { path: 'theme/:id', name: 'newspaper', component: Newspaper }
     ]
   },
 ];

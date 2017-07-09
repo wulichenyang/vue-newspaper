@@ -1,4 +1,8 @@
 .content-wrap {
+  margin-top: 56px;
+  @media (min-width: 480px) {
+    margin-top: 64px;
+  }
   min-height: 100vh;
 }
 .footer-wrap {

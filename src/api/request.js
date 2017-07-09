@@ -16,7 +16,7 @@ export const formatParams = data => {
 };
 
 const headers = {
-  'Content-Type': 'application/json'
+  'Content-Type': 'application/json',
 };
 
 export default (url, method = GET) => {
